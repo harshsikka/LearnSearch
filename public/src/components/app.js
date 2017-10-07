@@ -8,13 +8,33 @@ Vue.component('app',{
 
     return {
       postData: [],
-      dig: 'hello',
       showForm: {
+        status: false,
+      },
+      userState: firebase.auth().currentUser,
+      logIn: {
         status: false,
       }
     };
 
   },
+
+  methods: {
+    refreshData: function(){
+      //wipe current data
+      this.postData = [];
+      postData = this.postData;
+      getPosts((dbResult)=>{
+        dbResult.forEach(function(doc) {
+          postData.push(doc.data());
+        });
+        // sort the feeds by maximum upvotes
+        postData.sort(function(a, b){return b.upvotes - a.upvotes})
+        this.showForm.status = !this.showForm.status;
+      });
+    }
+  },
+
 
   // using the getPosts function in main.js
   created: function(){
@@ -23,6 +43,8 @@ Vue.component('app',{
       dbResult.forEach(function(doc) {
         postData.push(doc.data());
       });
+      // sort the feeds by maximum upvotes
+      postData.sort(function(a, b){return b.upvotes - a.upvotes})
     });
   },
 
@@ -30,9 +52,11 @@ Vue.component('app',{
 
   template:`
   <div>
-    <bar :showForm='showForm'></bar>
+    <bar :show-form='showForm' :user-state='userState' :log-in='logIn'></bar>
+    
     <br>
-    <submission v-show='showForm.status'></submission>
+   <!-- <div id="firebaseui-auth-container" v-show='!userState'></div> -->
+    <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:refresh-data='refreshData.bind(this)'></submission>
       <posts v-bind:post-data='postData' v-show='!showForm.status'></posts>
   </div>`
   
@@ -41,12 +65,7 @@ Vue.component('app',{
 });
 
 var vueApp = new Vue({
-  el: '#app',
-  data: {
-    posts: [],
-    test: 'something'
-  }
-
+  el: '#app'
 });
 
 

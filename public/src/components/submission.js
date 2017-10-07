@@ -2,11 +2,27 @@
 
 Vue.component('submission',{
 
+  props: ['refreshData'],
+
   data:function() {
     return {
       title: 'Add your title here!',
       link: 'Add your url here!'
     }
+  },
+
+  methods: {
+      submitPost: function() {
+        addPost({
+          title: this.title,
+          url: this.link,
+          upvotes: 1,
+          user: 'harshsikka'
+        })
+
+        this.refreshData();
+        
+      },
   },
   
 
@@ -26,7 +42,7 @@ Vue.component('submission',{
         
         </v-form>
 
-        <v-btn primary>
+        <v-btn primary @click.native='submitPost'>
           submit
         </v-btn>
       </v-card>

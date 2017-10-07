@@ -39,14 +39,22 @@
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       // The start method will wait until the DOM is loaded.
       ui.start('#firebaseui-auth-container', uiConfig);
+
+
+      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     </script>
   </head>
       
   <body >
     
-    <!-- <div id="firebaseui-auth-container"></div> -->
-    <div id="app"> 
-        <app ></app> 
+    <!--  -->
+    <div id="intro"> 
+      <v-app>
+        <intro></intro>
+        <br>
+        <br>
+        <div id="firebaseui-auth-container" ></div>
+      </v-app>
      
       </div>
 
@@ -66,12 +74,9 @@
       <script src="src/config.js"></script>
       <script src="src/main.js"></script>
       <!-- application components here -->
-      <script src='src/components/bar.js'></script>
-      <script src='src/components/submission.js'></script>
-      <script src='src/components/post.js'></script>
-      <script src='src/components/posts.js'></script>
-      <script src='src/components/app.js'></script>
-
+      <script src="src/intro/msg.js"></script>
+      <script src="src/intro/intro.js"></script>
+      
       
    
     </body>

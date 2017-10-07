@@ -22,7 +22,8 @@ var getPosts = function(cb) {
 //   user: 'harshsikka'
 // }
 var addPost = function(obj) {
-  db.collection("Posts").docadd(obj).then(function(docRef) {
+  db.collection("Posts").add(obj).then(function(docRef) {
+    console.log("Data succesfully sent", docRef);
     console.log("Document written with ID: ", docRef.id);
   }).catch(function(error) {
     console.error("Error adding document: ", error);
