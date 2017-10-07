@@ -1,0 +1,28 @@
+{
+  "name": "learnsearch",
+  "version": "0.0.1",
+  "description": "A curated feed for all of human knowledge",
+  "main": "index.js",
+  "scripts": {
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshsikka123/LearnSearch.git"
+  },
+  "author": "Harsh Sikka",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/harshsikka123/LearnSearch/issues"
+  },
+  "homepage": "https://github.com/harshsikka123/LearnSearch#readme",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
