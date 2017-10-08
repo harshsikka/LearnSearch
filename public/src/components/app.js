@@ -2,6 +2,7 @@
 
 Vue.component('app',{
   
+
   // storing data from db
   data: function() {
     
@@ -11,7 +12,7 @@ Vue.component('app',{
       showForm: {
         status: false,
       },
-      userState: firebase.auth().currentUser,
+      userState: firebase.auth().currentUser, // gotta figure this out, keeps evaluating to null
       logIn: {
         status: false,
       }
@@ -31,6 +32,16 @@ Vue.component('app',{
         // sort the feeds by maximum upvotes
         postData.sort(function(a, b){return b.upvotes - a.upvotes})
         this.showForm.status = !this.showForm.status;
+      });
+    },
+
+    renderTopicFeed: function(topic){
+      this.postData = [];
+      postData = this.postData;
+      dbRef = db.collection("Posts").where("topic", "==", topic).get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          postData.push(doc.data());
+        })
       });
     }
   },
@@ -55,6 +66,8 @@ Vue.component('app',{
     <bar :show-form='showForm' :user-state='userState' :log-in='logIn'></bar>
     
     <br>
+    <usermsg ></usermsg>
+    <br>
    <!-- <div id="firebaseui-auth-container" v-show='!userState'></div> -->
     <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:refresh-data='refreshData.bind(this)'></submission>
       <posts v-bind:post-data='postData' v-show='!showForm.status'></posts>
@@ -65,7 +78,12 @@ Vue.component('app',{
 });
 
 var vueApp = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    userState: firebase.auth().currentUser,
+    hello: 'goodbye'
+  }
+
 });
 
 
