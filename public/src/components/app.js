@@ -69,7 +69,7 @@ Vue.component('app',{
     <bar :show-form='showForm' :user-state='userState' :log-in='logIn'></bar>
     
     <br>
-    <usermsg :show-user-message='showUserMessage'></usermsg>
+    <announcement :show-user-message='showUserMessage'></announcement>
     <br>
    <!-- <div id="firebaseui-auth-container" v-show='!userState'></div> -->
     <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:refresh-data='refreshData.bind(this)'></submission>
