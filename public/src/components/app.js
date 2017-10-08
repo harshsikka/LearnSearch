@@ -12,6 +12,9 @@ Vue.component('app',{
       showForm: {
         status: false,
       },
+      showUserMessage: {
+        status: true
+      },
       userState: firebase.auth().currentUser, // gotta figure this out, keeps evaluating to null
       logIn: {
         status: false,
@@ -66,7 +69,7 @@ Vue.component('app',{
     <bar :show-form='showForm' :user-state='userState' :log-in='logIn'></bar>
     
     <br>
-    <usermsg ></usermsg>
+    <usermsg :show-user-message='showUserMessage'></usermsg>
     <br>
    <!-- <div id="firebaseui-auth-container" v-show='!userState'></div> -->
     <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:refresh-data='refreshData.bind(this)'></submission>

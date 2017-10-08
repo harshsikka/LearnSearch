@@ -27,6 +27,8 @@ Vue.component('intro',{
   <div>
   <template>
     <v-toolbar dark class="teal accent-3">
+    <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
       <v-toolbar-title class="white--text headline"> <v-icon>school</v-icon> LearnSearch</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-spacer></v-spacer>
@@ -39,6 +41,8 @@ Vue.component('intro',{
     <v-btn class="white--text error" v-show="showSignUp" @click.native="showSignUp = !showSignUp">
     Cancel
     </v-btn> 
+    <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
     </v-toolbar>
   </template>
   <br>

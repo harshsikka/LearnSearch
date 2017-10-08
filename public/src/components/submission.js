@@ -6,8 +6,8 @@ Vue.component('submission',{
 
   data:function() {
     return {
-      title: 'Add your title here!',
-      link: 'Add your url here!'
+      title: '',
+      link: ''
     }
   },
 
