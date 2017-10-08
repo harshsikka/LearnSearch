@@ -1,7 +1,7 @@
 # LearnSearch
 
 ## Ideas, Bugs, or something else?
-Feel free to reach out to me via email [email](has727@gmail.com) or [email](https://twitter.com/HarshSikka)
+Feel free to reach out to me via [email](has727@gmail.com) or [Twitter](https://twitter.com/HarshSikka)
 
 ## Upcoming Features:
 - Different Feeds: Programming, Startups, Design
