@@ -34,7 +34,7 @@ Vue.component('app',{
         });
         // sort the feeds by maximum upvotes
         postData.sort(function(a, b){return b.upvotes - a.upvotes})
-        this.showForm.status = !this.showForm.status;
+        
       });
     },
 
@@ -46,6 +46,19 @@ Vue.component('app',{
           postData.push(doc.data());
         })
       });
+    }, 
+    renderNewFeed: function(topic){
+      this.postData = [];
+      postData = this.postData;
+      getPosts((dbResult)=>{
+        dbResult.forEach(function(doc) {
+          postData.push(doc.data());
+        });
+        // sort the feeds by maximum upvotes
+        postData.sort(function(a, b){return b.timestamp - a.timestamp})
+        
+      });
+
     }
   },
 
@@ -66,13 +79,12 @@ Vue.component('app',{
 
   template:`
   <div>
-    <bar :show-form='showForm' :user-state='userState' :log-in='logIn'></bar>
-    
+    <bar :show-form='showForm' :user-state='userState' :log-in='logIn' :refresh-data='refreshData.bind(this)' :render-new-feed='renderNewFeed.bind(this)'></bar>
     <br>
     <announcement :show-user-message='showUserMessage'></announcement>
     <br>
    <!-- <div id="firebaseui-auth-container" v-show='!userState'></div> -->
-    <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:refresh-data='refreshData.bind(this)'></submission>
+    <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:show-form='showForm' v-bind:refresh-data='refreshData.bind(this)'></submission>
       <posts v-bind:post-data='postData' v-show='!showForm.status'></posts>
   </div>`
   

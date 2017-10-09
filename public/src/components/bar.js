@@ -1,5 +1,5 @@
 Vue.component('bar',{
-  props: ['showForm','userState','logIn'],
+  props: ['showForm','userState','logIn', 'refreshData','renderNewFeed'],
 
   data: function(){
     return {
@@ -17,6 +17,16 @@ Vue.component('bar',{
     <v-toolbar dark class="teal accent-3">
     <v-spacer></v-spacer>
       <v-toolbar-title class="white--text headline"> <v-icon>school</v-icon> LearnSearch</v-toolbar-title>
+      
+      
+     
+      <v-btn flat @click.native='refreshData'>Top</v-btn>
+      <v-btn flat @click.native='renderNewFeed'>New</v-btn>
+      
+
+      
+      
+
         <v-spacer></v-spacer>
         <v-spacer></v-spacer>
 
