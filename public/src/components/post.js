@@ -26,8 +26,8 @@ Vue.component('post',{
         // check to see if already has been clicked. examine this code carefully
         if(clicked.number === 0) {
           querySnapshot.docs[0].ref.update({
-            upvotes: addVote,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            upvotes: addVote
+            
             })
           clicked.number = 1;
           clicked.status = true;
