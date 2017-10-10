@@ -7,7 +7,8 @@ Vue.component('submission',{
   data:function() {
     return {
       title: '',
-      link: ''
+      link: '',
+      topic: '',
     }
   },
 
@@ -16,15 +17,25 @@ Vue.component('submission',{
         addPost({
           title: this.title,
           url: this.link,
+          topic: this.topic,
           upvotes: 1,
           user: 'harshsikka',
           timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
 
+        this.title = '';
+        this.link = '';
+        this.topic = '';
         this.refreshData();
         this.showForm.status = !this.showForm.status;
         
       },
+      cancelPost: function() {
+        this.title = '';
+        this.link = '';
+        this.topic = '';
+        this.showForm.status = !this.showForm.status;
+      }
   },
   
 
@@ -47,6 +58,9 @@ Vue.component('submission',{
         <v-btn primary @click.native='submitPost'>
           submit
         </v-btn>
+        <v-btn error  @click.native="cancelPost">
+        <v-icon >cancel</v-icon>
+       </v-btn>
       </v-card>
       </v-flex>
     </v-container>

@@ -44,10 +44,6 @@ Vue.component('bar',{
         <v-icon v-show="!show.status">add</v-icon>
       </v-btn>
 
-      <v-btn error v-show="show.status" @click.native="show.status = !show.status">
-      <v-icon >cancel</v-icon>
-     </v-btn>
-
       <v-spacer></v-spacer>
     </v-toolbar>
   </template>
