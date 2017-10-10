@@ -19,6 +19,7 @@ Vue.component('post',{
       console.log(title);
       dbRef = db.collection("Posts").where("title", "==", title).get()
       
+      
       dbRef.then(function(querySnapshot) {
         // console.log(querySnapshot.docs[0]);
         // console.log(querySnapshot.docs[0].ref);

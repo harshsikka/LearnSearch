@@ -1,11 +1,15 @@
 Vue.component('bar',{
-  props: ['showForm','userState','logIn', 'refreshData','renderNewFeed'],
+  props: ['showForm','userState','logIn', 'refreshData','renderNewFeed', 'renderTopicFeed'],
 
   data: function(){
     return {
     show: this.showForm,
     logging: this.logIn
     }
+  },
+
+  methods: {
+
   },
   
   
@@ -22,6 +26,11 @@ Vue.component('bar',{
      
       <v-btn flat @click.native='refreshData'>Top</v-btn>
       <v-btn flat @click.native='renderNewFeed'>New</v-btn>
+
+      <v-btn flat @click.native="renderTopicFeed('programming')">Programming</v-btn>
+      <v-btn flat @click.native="renderTopicFeed('AI')">Artificial Intelligence</v-btn>
+      <v-btn flat @click.native="renderTopicFeed('design')">Design</v-btn>
+      
       
 
       

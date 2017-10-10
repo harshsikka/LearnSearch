@@ -39,14 +39,35 @@ Vue.component('app',{
     },
 
     renderTopicFeed: function(topic){
+      // this.postData = [];
+      // postData = this.postData;
+      // dbRef = db.collection("Posts").where("topic", "==", topic).get().then(function(querySnapshot) {
+      //   querySnapshot.forEach(function(doc) {
+      //     postData.push(doc.data());
+      //   })
+      // });
+
+      console.log(this.postData);
       this.postData = [];
       postData = this.postData;
-      dbRef = db.collection("Posts").where("topic", "==", topic).get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+      getPosts((dbResult)=>{
+        dbResult.forEach(function(doc) {
           postData.push(doc.data());
-        })
+        });
+        // sort the feeds by maximum upvotes
+        postData.sort(function(a, b){return b.upvotes - a.upvotes})
+        console.log(postData);
+        for( var i = 0; i < postData.length; i++) {
+          if (postData[i].topic !== topic){
+            postData.splice(i,1)
+            i = i - 1;
+          }
+        }
+
       });
+      
     }, 
+
     renderNewFeed: function(topic){
       this.postData = [];
       postData = this.postData;
@@ -79,7 +100,7 @@ Vue.component('app',{
 
   template:`
   <div>
-    <bar :show-form='showForm' :user-state='userState' :log-in='logIn' :refresh-data='refreshData.bind(this)' :render-new-feed='renderNewFeed.bind(this)'></bar>
+    <bar :show-form='showForm' :user-state='userState' :log-in='logIn' :refresh-data='refreshData.bind(this)' :render-new-feed='renderNewFeed.bind(this)' :render-topic-feed='renderTopicFeed.bind(this)'></bar>
     <br>
     <announcement :show-user-message='showUserMessage'></announcement>
     <br>
