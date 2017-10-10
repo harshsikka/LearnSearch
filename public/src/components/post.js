@@ -12,6 +12,11 @@ Vue.component('post',{
 
   methods: {
     addUpvote: function() {
+
+      if(firebase.auth().currentUser === null){
+        alert('Please login or signup to upvote');
+      } else {
+
       var addVote = this.post.upvotes + 1;
       var subVote = this.post.upvotes;
       var title = this.post.title;
@@ -40,11 +45,9 @@ Vue.component('post',{
           clicked.number = 0;
           clicked.status = false;
         }
-        
-        
       })
 
-      
+     }
     }
   },
   template:`
