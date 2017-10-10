@@ -52,12 +52,17 @@ Vue.component('post',{
     <v-flex sm8 offset-sm2>
       <v-card class='elevation-1'>
         <v-card-title primary-title >
-          <v-btn color="normal" @click.native="addUpvote" v-show='!clicked.status'>{{post.upvotes + clicked.number}}
+
+          
+          <v-btn flat icon color="normal" @click.native="addUpvote" v-show='!clicked.status'>{{post.upvotes + clicked.number}}
+            <v-icon>navigation</v-icon>
+          </v-btn>
+
+          <v-btn flat icon color="teal accent-3" @click.native="addUpvote" v-show='clicked.status'>{{post.upvotes + clicked.number}}
           <v-icon>navigation</v-icon>
           </v-btn>
-          <v-btn color="teal accent-3" @click.native="addUpvote" v-show='clicked.status'>{{post.upvotes + clicked.number}}
-          <v-icon color='amber'>navigation</v-icon>
-          </v-btn>
+   
+
           <div>
           <a :href="post.url" target="_blank" style='text-decoration: none'>{{post.title}}</a>
             <!-- <a :href="post.url" target="_blank">{{post.title}}</a> -->
