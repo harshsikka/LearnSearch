@@ -12,22 +12,27 @@ Vue.component('announcement',{
         <v-card-title primary-title>
         
             <h6>Awesome to have you here!</h6> 
-            <p>If you'd like to contribute a learning link, hit the plus on the top right! Otherwise you can check out other posts below! </p>
+            <p>We're getting a ton of new members in the community, so keep telling your friends! Let's change how learning is done, together!</p>
             
-
             
-            <h6>Some Tips for navigating the LearnSearch community!</h6> 
             
-
-            
+            <h6>Announcements:</h6> 
             <ul>
-            <li>Clear Announcements by clicking on them! \n</li>
-            <li>You can sort feeds by Upvotes or Most recent by clicking the buttons on the toolbar\n</li>
+            <li>Shiny New Features: Subject feeds! Click a topic and see tagged posts. Currently CS, Business, Design, Physics and Chemistry</li>
+            <li>Upcoming Features: Descriptions, Comments, and User attribution for posts! Also thinking about karma or points</li>
             <li>Feature Suggestions or Bug Reports? Awesome, shoot me an <a  href='mailto:has727@g.harvard.edu'>email</a>, or <a href='https://twitter.com/HarshSikka' target="_blank">tweet me</a>!</li>
-            <li>You can find a list of upcoming features <a href='https://github.com/harshsikka123/LearnSearch/blob/master/README.md' target="_blank">here</a>!</li>
             </ul>
+            
+            
         </v-card-title>
       </v-card>
+      <v-card @click.native='showUserMessage.status = !showUserMessage.status'>
+      
+
+      <v-card-title primary-title>
+          <p>Thanks guys and gals, and please let me know if there is anything I can do to make LearnSearch better!</p>
+      </v-card-title>
+    </v-card>
     </v-flex>
   </v-layout>
 </template>

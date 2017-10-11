@@ -9,11 +9,22 @@ Vue.component('submission',{
       title: '',
       link: '',
       topic: '',
+      possibleTopics: [
+        'Computer Science',
+        'Business',
+        'Design',
+        'Physics',
+        'Chemistry'
+      ]
     }
   },
 
   methods: {
       submitPost: function() {
+        console.log(this.topic)
+        if(this.title === '' || this.url === '' || this.topic === ''){
+          return alert('Please fill out all fields before submitting!');
+        }
         addPost({
           title: this.title,
           url: this.link,
@@ -51,6 +62,15 @@ Vue.component('submission',{
           <v-flex xs12 sm6 offset-sm1>
             <v-text-field teal label="Title" v-model="title"></v-text-field>
             <v-text-field teal label="Link" v-model="link"></v-text-field>
+            <v-flex xs4>
+            <v-select
+              v-bind:items="possibleTopics"
+              v-model="topic"
+              label="Pick a Topic"
+              single-line
+              bottom
+            ></v-select>
+          </v-flex>
           </v-flex>
         
         </v-form>

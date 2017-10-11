@@ -27,9 +27,11 @@ Vue.component('bar',{
       <v-btn flat @click.native='refreshData'>Top</v-btn>
       <v-btn flat @click.native='renderNewFeed'>New</v-btn>
 
-      <v-btn flat @click.native="renderTopicFeed('programming')">Programming</v-btn>
-      <v-btn flat @click.native="renderTopicFeed('AI')">Artificial Intelligence</v-btn>
-      <v-btn flat @click.native="renderTopicFeed('design')">Design</v-btn>
+      <v-btn flat @click.native="renderTopicFeed('Computer Science')">Computer Science</v-btn>
+      <v-btn flat @click.native="renderTopicFeed('Business')">Business</v-btn>
+      <v-btn flat @click.native="renderTopicFeed('Design')">Design</v-btn>
+      <v-btn flat @click.native="renderTopicFeed('Physics')">Physics</v-btn>
+      <v-btn flat @click.native="renderTopicFeed('Chemistry')">Chemistry</v-btn>
       
       
 
