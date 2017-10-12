@@ -1,5 +1,5 @@
 Vue.component('bar',{
-  props: ['showForm','userState','logIn', 'refreshData','renderNewFeed', 'renderTopicFeed'],
+  props: ['showForm','userState','logIn', 'refreshData','renderNewFeed', 'renderTopicFeed', 'renderAllTimeFeed'],
 
   data: function(){
     return {
@@ -18,7 +18,7 @@ Vue.component('bar',{
   template:`
   <div>
   <template>
-    <v-toolbar dark class="teal accent-3">
+    <v-toolbar dark class="indigo accent-3">
     <v-spacer></v-spacer>
       <v-toolbar-title class="white--text headline"> <v-icon>school</v-icon> LearnSearch</v-toolbar-title>
       
@@ -26,6 +26,7 @@ Vue.component('bar',{
      
       <v-btn flat @click.native='refreshData'>Top</v-btn>
       <v-btn flat @click.native='renderNewFeed'>New</v-btn>
+      <v-btn flat @click.native='renderAllTimeFeed'>All Time</v-btn>
 
       <v-btn flat @click.native="renderTopicFeed('Computer Science')">Computer Science</v-btn>
       <v-btn flat @click.native="renderTopicFeed('Business')">Business</v-btn>
@@ -42,7 +43,7 @@ Vue.component('bar',{
         <v-spacer></v-spacer>
 
       <!-- took out userState from below v-show -->
-      <v-btn class="white--text blue"  v-show="!show.status" @click.native="show.status = !show.status">
+      <v-btn class="white--text light-blue accent-3"  v-show="!show.status" @click.native="show.status = !show.status">
         <v-icon v-show="!show.status">add</v-icon>
       </v-btn>
 

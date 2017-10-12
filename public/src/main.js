@@ -6,6 +6,13 @@ var getPosts = function(cb) {
     cb(querySnapshot)
   });
 }
+
+var getTopPosts = function(cb) {
+  db.collection("Posts").orderBy("timestamp","desc").limit(20).get().then(function(querySnapshot) {
+    console.log('working');
+    cb(querySnapshot);
+  });
+}
 // using the callback below with getPosts allows for us to log each individual document's data
 
 

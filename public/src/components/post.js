@@ -61,7 +61,7 @@ Vue.component('post',{
             <v-icon>navigation</v-icon>
           </v-btn>
 
-          <v-btn flat icon color="teal accent-3" @click.native="addUpvote" v-show='clicked.status'>{{post.upvotes + clicked.number}}
+          <v-btn flat icon color="indigo accent-3" @click.native="addUpvote" v-show='clicked.status'>{{post.upvotes + clicked.number}}
           <v-icon>navigation</v-icon>
           </v-btn>
    

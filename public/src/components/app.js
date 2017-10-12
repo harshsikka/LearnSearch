@@ -28,11 +28,27 @@ Vue.component('app',{
       //wipe current data
       this.postData = [];
       postData = this.postData;
+      getTopPosts((dbResult)=>{
+        dbResult.forEach(function(doc) {
+          postData.push(doc.data());
+        });
+        // sort the feeds by maximum upvotes
+        console.log('request');
+        postData.sort(function(a, b){return b.upvotes - a.upvotes})
+        
+      });
+    },
+
+    renderAllTimeFeed: function(){
+      //wipe current data
+      this.postData = [];
+      postData = this.postData;
       getPosts((dbResult)=>{
         dbResult.forEach(function(doc) {
           postData.push(doc.data());
         });
         // sort the feeds by maximum upvotes
+        console.log('request');
         postData.sort(function(a, b){return b.upvotes - a.upvotes})
         
       });
@@ -50,13 +66,14 @@ Vue.component('app',{
       console.log(this.postData);
       this.postData = [];
       postData = this.postData;
+      
       getPosts((dbResult)=>{
         dbResult.forEach(function(doc) {
           postData.push(doc.data());
         });
         // sort the feeds by maximum upvotes
         postData.sort(function(a, b){return b.upvotes - a.upvotes})
-        console.log(postData);
+        console.log('request');
         for( var i = 0; i < postData.length; i++) {
           if (postData[i].topic !== topic){
             postData.splice(i,1)
@@ -87,10 +104,11 @@ Vue.component('app',{
   // using the getPosts function in main.js
   created: function(){
     postData = this.postData;
-    getPosts((dbResult)=>{
+    getTopPosts((dbResult)=>{
       dbResult.forEach(function(doc) {
         postData.push(doc.data());
       });
+      console.log('request')
       // sort the feeds by maximum upvotes
       postData.sort(function(a, b){return b.upvotes - a.upvotes})
     });
@@ -100,7 +118,7 @@ Vue.component('app',{
 
   template:`
   <div>
-    <bar :show-form='showForm' :user-state='userState' :log-in='logIn' :refresh-data='refreshData.bind(this)' :render-new-feed='renderNewFeed.bind(this)' :render-topic-feed='renderTopicFeed.bind(this)'></bar>
+    <bar :show-form='showForm' :user-state='userState' :log-in='logIn' :refresh-data='refreshData.bind(this)' :render-new-feed='renderNewFeed.bind(this)' :render-topic-feed='renderTopicFeed.bind(this)' :render-all-time-feed='renderAllTimeFeed.bind(this)'></bar>
     <br>
     <announcement :show-user-message='showUserMessage'></announcement>
     <br>

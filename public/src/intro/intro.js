@@ -12,11 +12,26 @@ Vue.component('intro',{
       //wipe current data
       this.postData = [];
       postData = this.postData;
+      getTopPosts((dbResult)=>{
+        dbResult.forEach(function(doc) {
+          postData.push(doc.data());
+        });
+        // sort the feeds by maximum upvotes
+        postData.sort(function(a, b){return b.upvotes - a.upvotes})
+        
+      });
+    },
+
+    renderAllTimeFeed: function(){
+      //wipe current data
+      this.postData = [];
+      postData = this.postData;
       getPosts((dbResult)=>{
         dbResult.forEach(function(doc) {
           postData.push(doc.data());
         });
         // sort the feeds by maximum upvotes
+        console.log('request');
         postData.sort(function(a, b){return b.upvotes - a.upvotes})
         
       });
@@ -69,7 +84,7 @@ Vue.component('intro',{
   
   created: function(){
     postData = this.postData;
-    getPosts((dbResult)=>{
+    getTopPosts((dbResult)=>{
       dbResult.forEach(function(doc) {
         postData.push(doc.data());
       });
@@ -86,12 +101,13 @@ Vue.component('intro',{
 
   <div>
   <template>
-    <v-toolbar dark class="teal accent-3">
+    <v-toolbar dark class="indigo accent-3">
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
       <v-toolbar-title class="white--text headline"> <v-icon>school</v-icon> LearnSearch</v-toolbar-title>
       <v-btn flat @click.native='refreshData'>Top</v-btn>
       <v-btn flat @click.native='renderNewFeed'>New</v-btn>
+      <v-btn flat @click.native='renderAllTimeFeed'>All Time</v-btn>
 
       <v-btn flat @click.native="renderTopicFeed('Computer Science')">Computer Science</v-btn>
       <v-btn flat @click.native="renderTopicFeed('Business')">Business</v-btn>
@@ -102,7 +118,7 @@ Vue.component('intro',{
         <v-spacer></v-spacer>
       <v-spacer></v-spacer>
     
-    <v-btn class="white--text indigo" v-show="!showSignUp" @click.native="showSignUp = !showSignUp">
+    <v-btn class="white--text light-blue accent-3" v-show="!showSignUp" @click.native="showSignUp = !showSignUp">
       Login or Signup
     </v-btn>  
 

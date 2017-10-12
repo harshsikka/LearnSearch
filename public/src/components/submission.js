@@ -60,8 +60,8 @@ Vue.component('submission',{
         
           
           <v-flex xs12 sm6 offset-sm1>
-            <v-text-field teal label="Title" v-model="title"></v-text-field>
-            <v-text-field teal label="Link" v-model="link"></v-text-field>
+            <v-text-field indigo label="Title" v-model="title"></v-text-field>
+            <v-text-field indigo label="Link" v-model="link"></v-text-field>
             <v-flex xs4>
             <v-select
               v-bind:items="possibleTopics"
@@ -75,7 +75,7 @@ Vue.component('submission',{
         
         </v-form>
 
-        <v-btn primary @click.native='submitPost'>
+        <v-btn color="white--text light-blue accent-3" @click.native='submitPost'>
           submit
         </v-btn>
         <v-btn error  @click.native="cancelPost">
