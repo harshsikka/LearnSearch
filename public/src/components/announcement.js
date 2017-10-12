@@ -12,7 +12,7 @@ Vue.component('announcement',{
         <v-card-title primary-title>
         
             <h6>Awesome to have you here!</h6> 
-            <p>We're getting a ton of new members in the community, so keep telling your friends! Let's change how learning is done, together!</p>
+            <p>We're getting a ton of new members in the community, so let me know if there's any improvements I can make! Let's change how learning is done, together!</p>
             
             
             
@@ -30,7 +30,8 @@ Vue.component('announcement',{
       
 
       <v-card-title primary-title>
-          <p>Thanks guys and gals, and please let me know if there is anything I can do to make LearnSearch better!</p>
+          <p>If you enjoy LearnSearch, would you mind <a href="https://twitter.com/intent/tweet?text=I've been using LearnSearch, and it is awesome! Check it out at https://learnsearch.xyz">tweeting</a> about it, or sharing it with your friends? It would really help spread the word!</p>
+          <p> - Harsh </p>
       </v-card-title>
     </v-card>
     </v-flex>
