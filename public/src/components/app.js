@@ -15,10 +15,7 @@ Vue.component('app',{
       showUserMessage: {
         status: true
       },
-      userState: firebase.auth().currentUser, // gotta figure this out, keeps evaluating to null
-      logIn: {
-        status: false,
-      }
+      userState: 'not logged in',
     };
 
   },
@@ -103,12 +100,13 @@ Vue.component('app',{
 
   // using the getPosts function in main.js
   created: function(){
+    // this.userState = firebase.auth().currentUser.displayName;
     postData = this.postData;
     getTopPosts((dbResult)=>{
       dbResult.forEach(function(doc) {
         postData.push(doc.data());
       });
-      console.log('request')
+      this.userState = firebase.auth().currentUser.displayName;
       // sort the feeds by maximum upvotes
       postData.sort(function(a, b){return b.upvotes - a.upvotes})
     });
@@ -118,12 +116,12 @@ Vue.component('app',{
 
   template:`
   <div>
-    <bar :show-form='showForm' :user-state='userState' :log-in='logIn' :refresh-data='refreshData.bind(this)' :render-new-feed='renderNewFeed.bind(this)' :render-topic-feed='renderTopicFeed.bind(this)' :render-all-time-feed='renderAllTimeFeed.bind(this)'></bar>
+    <bar :show-form='showForm' :user-state='userState' :refresh-data='refreshData.bind(this)' :render-new-feed='renderNewFeed.bind(this)' :render-topic-feed='renderTopicFeed.bind(this)' :render-all-time-feed='renderAllTimeFeed.bind(this)'></bar>
     <br>
     <announcement :show-user-message='showUserMessage'></announcement>
     <br>
-   <!-- <div id="firebaseui-auth-container" v-show='!userState'></div> -->
-    <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:show-form='showForm' v-bind:refresh-data='refreshData.bind(this)'></submission>
+    
+    <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:show-form='showForm' v-bind:refresh-data='refreshData.bind(this)' :user-state='userState'></submission>
       <posts v-bind:post-data='postData' v-show='!showForm.status'></posts>
   </div>`
   

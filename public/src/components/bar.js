@@ -1,10 +1,9 @@
 Vue.component('bar',{
-  props: ['showForm','userState','logIn', 'refreshData','renderNewFeed', 'renderTopicFeed', 'renderAllTimeFeed'],
+  props: ['showForm','userState', 'refreshData','renderNewFeed', 'renderTopicFeed', 'renderAllTimeFeed'],
 
   data: function(){
     return {
-    show: this.showForm,
-    logging: this.logIn
+    show: this.showForm
     }
   },
 

@@ -67,9 +67,10 @@ Vue.component('post',{
    
 
           <div>
-          <a :href="post.url" target="_blank" style='text-decoration: none'>{{post.title}}</a>
-            <!-- <a :href="post.url" target="_blank">{{post.title}}</a> -->
+          <a :href="post.url" target="_blank" style='text-decoration: none'>{{post.title}}</a> by {{this.post.user}}
           </div>
+          
+          
         </v-card-title>
       </v-card>
     </v-flex>
