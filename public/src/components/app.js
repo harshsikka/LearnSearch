@@ -15,7 +15,7 @@ Vue.component('app',{
       showUserMessage: {
         status: true
       },
-      userState: null, // gotta figure this out, keeps evaluating to null
+      userState: 'not logged in', 
       logIn: {
         status: false,
       }
