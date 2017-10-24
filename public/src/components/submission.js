@@ -2,7 +2,7 @@
 
 Vue.component('submission',{
 
-  props: ['refreshData', 'showForm'],
+  props: ['refreshData', 'showForm', 'userState'],
 
   data:function() {
     return {
@@ -30,7 +30,7 @@ Vue.component('submission',{
           url: this.link,
           topic: this.topic,
           upvotes: 1,
-          user: 'harshsikka',
+          user: this.userState,
           timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
 

@@ -15,10 +15,7 @@ Vue.component('app',{
       showUserMessage: {
         status: true
       },
-      userState: 'not logged in', 
-      logIn: {
-        status: false,
-      }
+      userState: 'not logged in',
     };
 
   },
@@ -119,13 +116,13 @@ Vue.component('app',{
 
   template:`
   <div>
-    <bar :show-form='showForm' :user-state='userState' :log-in='logIn' :refresh-data='refreshData.bind(this)' :render-new-feed='renderNewFeed.bind(this)' :render-topic-feed='renderTopicFeed.bind(this)' :render-all-time-feed='renderAllTimeFeed.bind(this)'></bar>
+    <bar :show-form='showForm' :user-state='userState' :refresh-data='refreshData.bind(this)' :render-new-feed='renderNewFeed.bind(this)' :render-topic-feed='renderTopicFeed.bind(this)' :render-all-time-feed='renderAllTimeFeed.bind(this)'></bar>
     <br>
     <announcement :show-user-message='showUserMessage'></announcement>
     <br>
-   <!-- <div id="firebaseui-auth-container" v-show='!userState'></div> -->
-    <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:show-form='showForm' v-bind:refresh-data='refreshData.bind(this)'></submission>
-      <posts v-bind:post-data='postData' :user-state='userState' v-show='!showForm.status'></posts>
+    
+    <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:show-form='showForm' v-bind:refresh-data='refreshData.bind(this)' :user-state='userState'></submission>
+      <posts v-bind:post-data='postData' v-show='!showForm.status'></posts>
   </div>`
   
 // for submission, turn the posts v-show to false
