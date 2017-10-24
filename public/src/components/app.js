@@ -15,7 +15,7 @@ Vue.component('app',{
       showUserMessage: {
         status: true
       },
-      userState: firebase.auth().currentUser, // gotta figure this out, keeps evaluating to null
+      userState: null, // gotta figure this out, keeps evaluating to null
       logIn: {
         status: false,
       }
@@ -103,12 +103,13 @@ Vue.component('app',{
 
   // using the getPosts function in main.js
   created: function(){
+    // this.userState = firebase.auth().currentUser.displayName;
     postData = this.postData;
     getTopPosts((dbResult)=>{
       dbResult.forEach(function(doc) {
         postData.push(doc.data());
       });
-      console.log('request')
+      this.userState = firebase.auth().currentUser.displayName;
       // sort the feeds by maximum upvotes
       postData.sort(function(a, b){return b.upvotes - a.upvotes})
     });
@@ -124,7 +125,7 @@ Vue.component('app',{
     <br>
    <!-- <div id="firebaseui-auth-container" v-show='!userState'></div> -->
     <submission v-show='showForm.status' v-bind:post-data='postData' v-bind:show-form='showForm' v-bind:refresh-data='refreshData.bind(this)'></submission>
-      <posts v-bind:post-data='postData' v-show='!showForm.status'></posts>
+      <posts v-bind:post-data='postData' :user-state='userState' v-show='!showForm.status'></posts>
   </div>`
   
 // for submission, turn the posts v-show to false
